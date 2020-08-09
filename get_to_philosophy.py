@@ -42,6 +42,10 @@ def crawl(curr_url):
         print("Loop DETECTED !!! BACKTRACKINGGG ")
         return False  
     page = reqs.get(curr_url)
+
+    if(not page):
+        return False
+    
     curr_url = page.url
 
     visited[curr_url] = True
@@ -93,4 +97,5 @@ if __name__ == "__main__":
     if(not re.match("http(s)?://[a-zA-Z]{1,3}\.wikipedia\.org/(/)?wiki/.+", inp_url)):
         raise Exception("Not valid wiki page url")    
 
-    crawl(inp_url)
+    if(not crawl(inp_url)):
+        print("Coudldn't get to philosphy")
