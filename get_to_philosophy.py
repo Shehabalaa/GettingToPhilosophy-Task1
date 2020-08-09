@@ -58,7 +58,7 @@ def crawl(curr_url):
     if(not wiki_body):
         print("No html element with id mw-content-text")
 
-    body_paragraphs = wiki_body.contents[0].find_all('p')
+    body_paragraphs = wiki_body.contents[0].find_all('p', recursive=False)
     body_paragraphs = list(filter(lambda p : ''.join(p.text.split()) != '', body_paragraphs))
     body_paragraphs_text = ''.join(list(map(str,body_paragraphs)))
     
